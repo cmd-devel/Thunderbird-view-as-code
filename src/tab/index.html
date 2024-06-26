@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title id="title"></title>
+        <link id="hljs-theme" rel="stylesheet" href="vendor/highlight/styles/github.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="index.css">
+    </head>
+
+    <body>
+        <header>
+            <label>Language</label>
+            <select id="language-select"></select>
+            <label>Theme</label>
+            <select id="theme-select"></select>
+            <button id="save-config">Save</button>
+        </header>
+        <div>
+            <pre id="codebg"><span class="hljs"><code id="code"></code></span></pre>
+        </div>
+        <script src="vendor/highlight/highlight.min.js"></script>
+        <script type="module" src="index.js"></script>
+    </body>
+</html>
