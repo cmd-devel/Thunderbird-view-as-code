@@ -1,7 +1,14 @@
+const getMessageContent = (fullMessage) => {
+    if (fullMessage.parts[0].contentType === 'text/plain') {
+        return fullMessage.parts[0].body;
+    } else if (fullMessage.parts[0].contentType === 'multipart/signed') {
+        return getMessageContent(fullMessage.parts[0]);
+    }
+}
+
 const openCodeTab = async (tab) => {
     const message = await messenger.messageDisplay.getDisplayedMessage(tab.id);
-    const full_message = await messenger.messages.getFull(message.id);
-    const body = full_message.parts[0].body;
+    const body = getMessageContent(await messenger.messages.getFull(message.id));
 
     browser.tabs.create({
         active: true,
