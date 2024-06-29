@@ -22,7 +22,6 @@
     "background": {
         "scripts": [
             "main.js"
-        ],
-        "permanent": false
+        ]
     }
 }
