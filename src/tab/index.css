@@ -17,3 +17,12 @@ body {
     padding: 15px;
     border-radius: 5px;
 }
+
+#error-box {
+    visibility: collapse;
+    width: 40vw;
+    border-radius: 5px;
+    text-align: center;
+    padding: 15px;
+    background-color: #ff8080;
+}
