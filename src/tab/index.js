@@ -103,8 +103,6 @@
         if (data.code !== null) {
             setTitle(data.title);
             setCode(data.code);
-            const defaultLanguage = 'c';
-            setLanguage(defaultLanguage);
         } else if (data.error !== null) {
             setError(data.error);    
         } else {
@@ -154,8 +152,6 @@
     };
 
     const setupPage = async () => {
-        browser.runtime.onMessage.addListener(receiveCode);
-
         // prepare language selection list",
         const langSelect = getLanguageSelect();
         hljs.listLanguages().forEach(lang => {
@@ -181,6 +177,7 @@
         await loadConfig();
     };
 
+    browser.runtime.onMessage.addListener(receiveCode);
     window.addEventListener('load', async () => {
         setupPage();
     });

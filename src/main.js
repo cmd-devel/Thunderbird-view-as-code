@@ -26,7 +26,7 @@ const openCodeTab = async (tab) => {
         const id = tab.id;
         const handleUpdatedTab = async (tabIdUpdated, changeInfo, tabInfo) => {
             if (tabIdUpdated === id && changeInfo.status === 'complete') {
-                await browser.tabs.sendMessage(tab.id, {
+                await browser.tabs.sendMessage(id, {
                     title: message.subject,
                     code,
                     error
