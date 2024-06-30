@@ -54,6 +54,14 @@
         return document.getElementById('save-config');
     };
 
+    const getErrorTextNode = () => {
+        return document.querySelector('#error-box p');
+    };
+    
+    const getErrorNode = () => {
+        return document.getElementById('error-box');
+    };
+    
     const setLanguage = (lang) => {
         const codeNode = getCodeNode();
         const highlighted = hljs.highlight(codeNode.textContent, { language: lang });
