@@ -89,12 +89,27 @@
         titleNode.textContent = title;
     };
 
+    const setError = (error) => {
+        const errorTextNode = getErrorTextNode();
+        const errorNode = getErrorNode();
+        const codeNode = getCodeBgNode();
+        errorTextNode.textContent = error;
+        errorNode.style.visibility = 'visible';
+        codeNode.parentElement.style.visibility = 'collapse';
+    };
+
     const receiveCode = (data, sender) => {
         browser.runtime.onMessage.removeListener(receiveCode);
-        setTitle(data.title);
-        setCode(data.code);
-        const defaultLanguage = 'c';
-        setLanguage(defaultLanguage);
+        if (data.code !== null) {
+            setTitle(data.title);
+            setCode(data.code);
+            const defaultLanguage = 'c';
+            setLanguage(defaultLanguage);
+        } else if (data.error !== null) {
+            setError(data.error);    
+        } else {
+            console.error('Internal error');
+        }
         return Promise.resolve();
     };
 
